@@ -203,9 +203,9 @@ body {
 
 
 ::view-transition-new(app-content) {
-  animation: 300ms easy;
+  animation: 300ms ease;
 }
 
 ::view-transition-old(app-content) {
-  animation: 300ms easy reverse;
+  animation: 300ms ease reverse;
 }
