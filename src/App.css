@@ -1,0 +1,224 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body {
+  background: linear-gradient(145deg, rgba(74, 12, 45, 1) 0%, rgba(4, 42, 68, 1) 100%);
+  min-height: 100vh;
+  padding: 20px;
+  color: white;
+  overflow: hidden;
+}
+
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.iphone {
+  max-width: 380px;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.screens-container {
+  display: flex;
+  transition: transform 0.3s ease-out;
+}
+
+.screen {
+  min-width: 100%;
+  padding: 20px;
+}
+
+.status-bar {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 20px;
+  font-size: 14px;
+  position: relative;
+  z-index: 2;
+}
+
+.widgets {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.widget {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 15px;
+  min-height: 120px;
+}
+
+.weather {
+  background: linear-gradient(180deg, #1a75ff 0%, #005ae6 100%);
+}
+
+.temp {
+  font-size: 42px;
+  font-weight: 300;
+  margin: 5px 0;
+}
+
+.app-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  padding: 10px;
+}
+
+.app {
+  all: unset;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  appearance: reset;
+}
+
+.app-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  margin-bottom: 5px;
+  cursor: pointer;
+  transition: transform 0.2s;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+}
+
+.app-icon:active {
+  transform: scale(0.9);
+}
+
+.app-name {
+  font-size: 12px;
+}
+
+.search-bar {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  margin: 20px 10px;
+  padding: 10px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.dock {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  border-radius: 30px;
+  margin: 10px;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.app-content {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  padding: 20px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.back-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: 20px;
+  color: white;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.calendar-widget {
+  background: #1c1c1e;
+  color: white;
+}
+
+.calendar-date {
+  font-size: 32px;
+  margin: 5px 0;
+}
+
+.calendar-event {
+  font-size: 14px;
+  color: #ff3b30;
+}
+
+.page-indicator {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.page-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.3);
+  margin: 0 5px;
+}
+
+.page-dot.active {
+  background-color: white;
+}
+
+.app-content {
+  view-transition-name: app-content;
+}
+
+
+::view-transition-new(app-content) {
+  animation: 300ms easy;
+  animation-name: scaleUp;
+}
+
+::view-transition-old(app-content) {
+  animation: 300ms easy reverse;
+  animation-name: scaleUp;
+}
+
+@keyframes scaleUp {
+  from { 
+    opacity: 0;
+    border-radius: 12px;
+  }
+  to { 
+    opacity: 1; 
+    border-radius: 0px;
+  }
+}
