@@ -7,7 +7,7 @@ import { flushSync } from "react-dom"
 
 const App: React.FC = () => {
   const [app, setApp] = useState<string>();
-  const openedApp = useRef<HTMLButtonElement>();
+  const openedApp = useRef<HTMLButtonElement>(undefined);
 
   const handleAppOpened = (e: React.MouseEvent<HTMLButtonElement>, appName: string) => {
     openedApp.current = (e.target as HTMLButtonElement);
