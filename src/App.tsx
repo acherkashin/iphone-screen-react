@@ -13,7 +13,7 @@ const App: React.FC = () => {
     openedApp.current = (e.target as HTMLButtonElement);
     openedApp.current.style.viewTransitionName = 'app-content';
 
-    document.startViewTransition(() => {
+    startViewTransition(() => {
       if (openedApp.current?.style) {
         openedApp.current.style.viewTransitionName = '';
       }
@@ -25,7 +25,7 @@ const App: React.FC = () => {
   };
 
   const handleClosed = async () => {
-    const transition = document.startViewTransition(() => {
+    const transition = startViewTransition(() => {
       if (openedApp.current?.style) {
         openedApp.current.style.viewTransitionName = 'app-content';
       }
@@ -49,6 +49,15 @@ const App: React.FC = () => {
     </div>
   )
 }
+
+function startViewTransition(callback: () => void) {
+  if ('startViewTransition' in document) {
+    return document.startViewTransition(callback);
+  } else {
+    callback();
+    return { finished: Promise.resolve() };
+  }
+};
 
 export default App
 
